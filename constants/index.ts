@@ -27,12 +27,12 @@ import check from "@/assets/images/check.png";
 import getStarted from "@/assets/images/get-started.png";
 import message from "@/assets/images/message.png";
 import noResult from "@/assets/images/no-result.png";
+import onboarding2 from "@/assets/images/onboarding-image-1.png";
+import onboarding3 from "@/assets/images/onboarding-image-2.png";
+import onboarding1 from "@/assets/images/onboarding-image.png";
 import signUpCar from "@/assets/images/signup-car.png";
 import splashIcon from "@/assets/images/splash-icon.png";
 import splash from "@/assets/images/splash.png";
-const onboarding1 = require("../assets/images/onboarding1.png");
-const onboarding2 = require("../assets/images/onboarding2.png");
-const onboarding3 = require("../assets/images/onboarding3.png");
 
 export const images = {
   onboarding1,
@@ -81,21 +81,21 @@ export const onboarding = [
     title: "Welcome To Handify",
     description:
       "Find trusted handymen for all your home service needs. From plumbing to electrical work, we've got you covered.",
-    image: require("../assets/images/onboarding-image.png"),
+    image: onboarding1,
   },
   {
     id: 2,
     title: "Book Services Easily",
     description:
       "Browse through verified handymen, check their ratings and reviews, then book your service with just a few taps.",
-    image: require("../assets/images/onboarding-image-1.png"),
+    image: onboarding2,
   },
   {
     id: 3,
     title: "Get Work Done Right",
     description:
       "Track your service requests, communicate with handymen, and ensure quality work with our secure platform.",
-    image: require("../assets/images/onboarding-image-2.png"),
+    image: onboarding3,
   },
 ];
 
