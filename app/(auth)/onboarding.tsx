@@ -7,64 +7,88 @@ import Swiper from "react-native-swiper";
 import CustomButton from "@/components/CustomButton";
 import { onboarding } from "@/constants";
 
-const Home = () => {
+const OnboardingScreen = () => {
   const swiperRef = useRef<Swiper>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
   const isLastSlide = activeIndex === onboarding.length - 1;
 
   return (
-    <SafeAreaView className="flex h-full items-center justify-between bg-white">
-      <TouchableOpacity
-        onPress={() => {
-          router.replace("/(auth)/sign-up");
-        }}
-        className="w-full flex justify-end items-end p-5"
-      >
-        <Text className="text-black text-md font-JakartaBold">Skip</Text>
-      </TouchableOpacity>
+    <SafeAreaView className="flex-1 bg-white">
+      {/* Skip Button */}
+      <View className="flex-row justify-end items-center px-6 pt-4">
+        <TouchableOpacity
+          onPress={() => {
+            router.replace("/(auth)/sign-up");
+          }}
+          className="px-4 py-2"
+        >
+          <Text className="text-[#8B4513] text-lg font-JakartaSemiBold">
+            Skip
+          </Text>
+        </TouchableOpacity>
+      </View>
 
-      <Swiper
-        ref={swiperRef}
-        loop={false}
-        dot={
-          <View className="w-[32px] h-[4px] mx-1 bg-[#E2E8F0] rounded-full" />
-        }
-        activeDot={
-          <View className="w-[32px] h-[4px] mx-1 bg-[#0286FF] rounded-full" />
-        }
-        onIndexChanged={(index) => setActiveIndex(index)}
-      >
-        {onboarding.map((item) => (
-          <View key={item.id} className="flex items-center justify-center p-5">
-            <Image
-              source={item.image}
-              className="w-full h-[300px]"
-              resizeMode="contain"
-            />
-            <View className="flex flex-row items-center justify-center w-full mt-10">
-              <Text className="text-black text-3xl font-bold mx-10 text-center">
-                {item.title}
-              </Text>
+      {/* Swiper Container */}
+      <View className="flex-1 justify-center">
+        <Swiper
+          ref={swiperRef}
+          loop={false}
+          showsPagination={true}
+          paginationStyle={{
+            bottom: 60,
+          }}
+          dot={<View className="w-3 h-3 mx-1 bg-[#E5E5E5] rounded-full" />}
+          activeDot={
+            <View className="w-8 h-3 mx-1 bg-[#8B4513] rounded-full" />
+          }
+          onIndexChanged={(index) => setActiveIndex(index)}
+        >
+          {onboarding.map((item, index) => (
+            <View
+              key={item.id}
+              className="flex-1 items-center justify-center px-8"
+            >
+              {/* Image Container */}
+              <View className="flex-1 justify-center items-center mb-8">
+                <Image
+                  source={item.image}
+                  className="w-full h-80"
+                  resizeMode="contain"
+                  onError={(error) => console.log("Image load error:", error)}
+                  onLoad={() => console.log("Image loaded successfully")}
+                />
+              </View>
+
+              {/* Text Content */}
+              <View className="items-center mb-12">
+                <Text className="text-[#8B4513] text-3xl font-JakartaBold text-center mb-4 leading-10">
+                  {item.title}
+                </Text>
+                <Text className="text-[#666666] text-lg font-JakartaMedium text-center leading-7 px-4">
+                  {item.description}
+                </Text>
+              </View>
             </View>
-            <Text className="text-md font-JakartaSemiBold text-center text-[#858585] mx-10 mt-3">
-              {item.description}
-            </Text>
-          </View>
-        ))}
-      </Swiper>
+          ))}
+        </Swiper>
+      </View>
 
-      <CustomButton
-        title={isLastSlide ? "Get Started" : "Next"}
-        onPress={() =>
-          isLastSlide
-            ? router.replace("/(auth)/sign-up")
-            : swiperRef.current?.scrollBy(1)
-        }
-        className="w-11/12 mt-10 mb-5"
-      />
+      {/* Bottom Button */}
+      <View className="px-6 pb-8">
+        <CustomButton
+          title={isLastSlide ? "Get Started" : "Next"}
+          onPress={() =>
+            isLastSlide
+              ? router.replace("/(auth)/sign-up")
+              : swiperRef.current?.scrollBy(1)
+          }
+          bgVariant="primary"
+          className="shadow-lg"
+        />
+      </View>
     </SafeAreaView>
   );
 };
 
-export default Home;
+export default OnboardingScreen;

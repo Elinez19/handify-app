@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./app/**/*.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}"],
+  presets: [require("nativewind/preset")],
   theme: {
     extend: {
       fontFamily: {
@@ -14,26 +15,26 @@ module.exports = {
       },
       colors: {
         primary: {
-          100: "#F5F8FF",
-          200: "#EBF4FF",
-          300: "#C3D9FF",
-          400: "#9BBFFF",
-          500: "#0286FF",
-          600: "#6A85E6",
-          700: "#475A99",
-          800: "#364573",
-          900: "#242B4D",
+          100: "#FFE5E0",
+          200: "#FFC4B8",
+          300: "#FFA28F",
+          400: "#FE8C73", // base coral
+          500: "#E6725A",
+          600: "#C95B46",
+          700: "#A24638",
+          800: "#703024",
+          900: "#4A1F16",
         },
         secondary: {
-          100: "#F8F8F8",
-          200: "#F1F1F1",
-          300: "#D9D9D9",
-          400: "#C2C2C2",
-          500: "#AAAAAA",
-          600: "#999999",
-          700: "#666666",
-          800: "#4D4D4D",
-          900: "#333333",
+          100: "#E6F4F7",
+          200: "#C0E3EB",
+          300: "#99D2DF",
+          400: "#70BFD2",
+          500: "#4998B0", // base teal
+          600: "#3A7D94",
+          700: "#2D6276",
+          800: "#204659",
+          900: "#142C3A",
         },
         success: {
           100: "#F0FFF4",
@@ -69,14 +70,14 @@ module.exports = {
           900: "#713F12",
         },
         general: {
-          100: "#CED1DD",
-          200: "#858585",
-          300: "#EEEEEE",
-          400: "#0CC25F",
-          500: "#F6F8FA",
-          600: "#E6F3FF",
-          700: "#EBEBEB",
-          800: "#ADADAD",
+          100: "#F6F8FA",
+          200: "#EEEEEE",
+          300: "#EBEBEB",
+          400: "#E6F3FF",
+          500: "#CED1DD",
+          600: "#ADADAD",
+          700: "#858585",
+          800: "#0CC25F",
         },
       },
     },

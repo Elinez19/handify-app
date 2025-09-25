@@ -27,10 +27,12 @@ import check from "@/assets/images/check.png";
 import getStarted from "@/assets/images/get-started.png";
 import message from "@/assets/images/message.png";
 import noResult from "@/assets/images/no-result.png";
-import onboarding1 from "@/assets/images/onboarding1.png";
-import onboarding2 from "@/assets/images/onboarding2.png";
-import onboarding3 from "@/assets/images/onboarding3.png";
 import signUpCar from "@/assets/images/signup-car.png";
+import splashIcon from "@/assets/images/splash-icon.png";
+import splash from "@/assets/images/splash.png";
+const onboarding1 = require("../assets/images/onboarding1.png");
+const onboarding2 = require("../assets/images/onboarding2.png");
+const onboarding3 = require("../assets/images/onboarding3.png");
 
 export const images = {
   onboarding1,
@@ -41,6 +43,8 @@ export const images = {
   check,
   noResult,
   message,
+  splashIcon,
+  splash,
 };
 
 export const icons = {
@@ -74,24 +78,24 @@ export const icons = {
 export const onboarding = [
   {
     id: 1,
-    title: "The perfect home service is just a tap away!",
+    title: "Welcome To Handify",
     description:
-      "Your journey begins with Ryde. Find your ideal home service effortlessly.",
-    image: images.onboarding1,
+      "Find trusted handymen for all your home service needs. From plumbing to electrical work, we've got you covered.",
+    image: require("../assets/images/onboarding1.png"),
   },
   {
     id: 2,
-    title: "Best home service in your hands with Ryde",
+    title: "Book Services Easily",
     description:
-      "Discover the convenience of finding your perfect home service with Ryde",
-    image: images.onboarding2,
+      "Browse through verified handymen, check their ratings and reviews, then book your service with just a few taps.",
+    image: require("../assets/images/onboarding2.png"),
   },
   {
     id: 3,
-    title: "Your home service, your way. Let's go!",
+    title: "Get Work Done Right",
     description:
-      "Enter your home service, sit back, and let us take care of the rest.",
-    image: images.onboarding3,
+      "Track your service requests, communicate with handymen, and ensure quality work with our secure platform.",
+    image: require("../assets/images/onboarding3.png"),
   },
 ];
 
