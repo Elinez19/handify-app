@@ -81,21 +81,21 @@ export const onboarding = [
     title: "Welcome To Handify",
     description:
       "Find trusted handymen for all your home service needs. From plumbing to electrical work, we've got you covered.",
-    image: require("../assets/images/onboarding1.png"),
+    image: require("../assets/images/onboarding-image.png"),
   },
   {
     id: 2,
     title: "Book Services Easily",
     description:
       "Browse through verified handymen, check their ratings and reviews, then book your service with just a few taps.",
-    image: require("../assets/images/onboarding2.png"),
+    image: require("../assets/images/onboarding-image-1.png"),
   },
   {
     id: 3,
     title: "Get Work Done Right",
     description:
       "Track your service requests, communicate with handymen, and ensure quality work with our secure platform.",
-    image: require("../assets/images/onboarding3.png"),
+    image: require("../assets/images/onboarding-image-2.png"),
   },
 ];
 

@@ -44,19 +44,21 @@ const OnboardingScreen = () => {
           }
           onIndexChanged={(index) => setActiveIndex(index)}
         >
-          {onboarding.map((item, index) => (
+          {onboarding.map((item) => (
             <View
               key={item.id}
-              className="flex-1 items-center justify-center px-8"
+              className="flex-1 justify-center items-center px-8"
             >
-              {/* Image Container */}
-              <View className="flex-1 justify-center items-center mb-8">
+              {/* Image Container with fixed height */}
+              <View className="w-full h-[300px] mb-8 justify-center items-center">
                 <Image
                   source={item.image}
-                  className="w-full h-80"
+                  className="w-full h-full"
                   resizeMode="contain"
-                  onError={(error) => console.log("Image load error:", error)}
-                  onLoad={() => console.log("Image loaded successfully")}
+                  onError={(e) =>
+                    console.log("Image load error:", e.nativeEvent.error)
+                  }
+                  onLoad={() => console.log("Image loaded:", item.id)}
                 />
               </View>
 
