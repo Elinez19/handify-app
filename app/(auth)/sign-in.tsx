@@ -94,7 +94,7 @@ const SignIn = () => {
           </View>
 
           {/* Remember Me & Forgot Password */}
-          <View className="flex-row justify-between items-center mb-8">
+          <View className="flex-row justify-between items-center mb-8 gap-2">
             <TouchableOpacity
               onPress={() => setRememberMe(!rememberMe)}
               className="flex-row items-center"
@@ -105,7 +105,7 @@ const SignIn = () => {
                 }`}
               >
                 {rememberMe && (
-                  <Image source={icons.checkmark} className="w-3 h-3" />
+                  <Image source={icons.checkmark} className="w-4 h-4" />
                 )}
               </View>
               <Text className="text-[#666666] text-lg font-JakartaMedium">
@@ -113,7 +113,9 @@ const SignIn = () => {
               </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => router.push("/(auth)/forgot-password")}
+            >
               <Text className="text-[#8B4513] text-lg font-JakartaSemiBold">
                 Forgot password?
               </Text>

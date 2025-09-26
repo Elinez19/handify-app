@@ -30,7 +30,7 @@ const OnboardingScreen = () => {
       </View>
 
       {/* Swiper Container */}
-      <View className="flex-1 justify-center">
+      <View className="flex-1 -mt-14 justify-center">
         <Swiper
           ref={swiperRef}
           loop={false}
@@ -38,7 +38,7 @@ const OnboardingScreen = () => {
           paginationStyle={{
             bottom: 60,
           }}
-          dot={<View className="w-3 h-3 mx-1 bg-[#E5E5E5] rounded-full" />}
+          dot={<View className="w-4 h-2 mx-1 bg-[#E5E5E5] rounded-full" />}
           activeDot={
             <View className="w-8 h-3 mx-1 bg-[#8B4513] rounded-full" />
           }
@@ -55,10 +55,6 @@ const OnboardingScreen = () => {
                   source={item.image}
                   className="w-full h-full"
                   resizeMode="contain"
-                  onError={(e) =>
-                    console.log("Image load error:", e.nativeEvent.error)
-                  }
-                  onLoad={() => console.log("Image loaded:", item.id)}
                 />
               </View>
 
