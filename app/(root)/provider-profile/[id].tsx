@@ -1,5 +1,6 @@
 import ConfirmationModal from "@/components/ConfirmationModal";
 import NoticeBanner from "@/components/NoticeBanner";
+import { serviceProfessionals } from "@/constants";
 import { Ionicons } from "@expo/vector-icons";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import React, { useState } from "react";
@@ -21,28 +22,11 @@ const ServiceDetails = () => {
   const [isBooking, setIsBooking] = useState(false);
   const [showExitBanner, setShowExitBanner] = useState(false);
 
-  // Mock data for the professional
-  const professional = {
-    id: id || "1",
-    name: "Julian Marcu Elian",
-    profession: "Painter • Builder",
-    rate: "₹349/hrs",
-    rating: "4.8",
-    reviewCount: "5k+ Reviews",
-    experience: "13 yrs Experience",
-    customers: "2000+ Customers",
-    badge: "Best Top Painter",
-    image: "https://i.pravatar.cc/300?img=50",
-    description:
-      "Julian Marcu Elian is a highly skilled, professional painter with over 13 years of experience in residential and commercial painting. His expertise includes interior and exterior finishing, color consultation, and surface preparation. Julian is known for his attention to detail, punctuality, and ability to transform spaces with quality workmanship.",
-    hourlyFee: "₹349.00",
-    teamWorks: "₹1049.00 (4 - 5hrs)",
-    reviewAvatars: [
-      "https://i.pravatar.cc/40?img=1",
-      "https://i.pravatar.cc/40?img=2",
-      "https://i.pravatar.cc/40?img=3",
-    ],
-  };
+  // Get professional data based on service ID
+  const serviceId = parseInt(id as string) || 1;
+  const professional =
+    serviceProfessionals[serviceId as keyof typeof serviceProfessionals] ||
+    serviceProfessionals[1];
 
   const tabs = ["About", "Availability", "Experience", "Reviews"];
 
@@ -67,14 +51,42 @@ const ServiceDetails = () => {
         return (
           <View className="px-6">
             <Text className="text-lg font-semibold text-gray-900 mb-3">
-              Description
+              About {professional.name.split(" ")[0]}
             </Text>
             <Text className="text-gray-600 leading-6 mb-4">
               {professional.description}
             </Text>
-            <TouchableOpacity>
-              <Text className="text-orange-500 font-medium">Read More</Text>
-            </TouchableOpacity>
+            <View className="mb-4">
+              <Text className="text-gray-900 font-semibold mb-2">
+                Specialties
+              </Text>
+              <View className="flex-row flex-wrap gap-2">
+                {professional.specialties.map((specialty, index) => (
+                  <View
+                    key={index}
+                    className="bg-orange-100 px-3 py-1 rounded-full"
+                  >
+                    <Text className="text-orange-600 text-sm font-medium">
+                      {specialty}
+                    </Text>
+                  </View>
+                ))}
+              </View>
+            </View>
+            <View className="mb-4">
+              <Text className="text-gray-900 font-semibold mb-2">
+                Languages
+              </Text>
+              <Text className="text-gray-600">
+                {professional.languages.join(", ")}
+              </Text>
+            </View>
+            <View>
+              <Text className="text-gray-900 font-semibold mb-2">
+                Service Area
+              </Text>
+              <Text className="text-gray-600">{professional.location}</Text>
+            </View>
 
             <View className="mt-6">
               <Text className="text-lg font-semibold text-gray-900 mb-3">
@@ -88,7 +100,7 @@ const ServiceDetails = () => {
                       <Ionicons name="cash" size={20} color="#F97316" />
                     </View>
                     <Text className="text-gray-900 font-medium">
-                      Hourly Fee
+                      Service Fee
                     </Text>
                   </View>
                   <Text className="text-orange-500 font-bold text-lg">
@@ -104,7 +116,7 @@ const ServiceDetails = () => {
                       <Ionicons name="people" size={20} color="#F97316" />
                     </View>
                     <Text className="text-gray-900 font-medium">
-                      Team Works
+                      Team Service
                     </Text>
                   </View>
                   <Text className="text-orange-500 font-bold text-lg">
@@ -118,6 +130,18 @@ const ServiceDetails = () => {
       case "Availability":
         return (
           <View className="px-6">
+            <View className="bg-gray-50 rounded-2xl p-4 mb-4">
+              <Text className="text-gray-900 font-semibold mb-2">
+                Current Availability
+              </Text>
+              <Text className="text-green-600 font-medium mb-2">
+                {professional.availability}
+              </Text>
+              <Text className="text-gray-600 text-sm">
+                Response time: {professional.responseTime}
+              </Text>
+            </View>
+
             <Text className="text-lg font-semibold text-gray-900 mb-4">
               Available Time Slots
             </Text>
@@ -148,48 +172,44 @@ const ServiceDetails = () => {
         return (
           <View className="px-6">
             <Text className="text-lg font-semibold text-gray-900 mb-4">
-              Work Experience
+              Professional Experience
             </Text>
             <View className="space-y-4">
-              {[
-                {
-                  company: "Elite Painting Co.",
-                  position: "Senior Painter",
-                  duration: "2018 - Present",
-                  description:
-                    "Leading residential and commercial painting projects",
-                },
-                {
-                  company: "City Builders",
-                  position: "Painter",
-                  duration: "2015 - 2018",
-                  description:
-                    "Specialized in interior painting and color consultation",
-                },
-                {
-                  company: "Home Services Pro",
-                  position: "Junior Painter",
-                  duration: "2012 - 2015",
-                  description:
-                    "Started career in residential painting services",
-                },
-              ].map((exp, index) => (
-                <View
-                  key={index}
-                  className="bg-white rounded-2xl p-4 shadow-sm"
-                >
-                  <Text className="text-gray-900 font-semibold text-lg">
-                    {exp.position}
-                  </Text>
-                  <Text className="text-orange-500 font-medium">
-                    {exp.company}
-                  </Text>
-                  <Text className="text-gray-500 text-sm mb-2">
-                    {exp.duration}
-                  </Text>
-                  <Text className="text-gray-600">{exp.description}</Text>
-                </View>
-              ))}
+              <View className="bg-gray-50 rounded-2xl p-4">
+                <Text className="text-gray-900 font-semibold mb-1">
+                  {professional.profession.split(" • ")[0]} Specialist
+                </Text>
+                <Text className="text-gray-500 text-sm mb-2">
+                  {professional.experience} • {professional.customers}
+                </Text>
+                <Text className="text-gray-600 text-sm">
+                  • {professional.experience} in the field
+                </Text>
+                <Text className="text-gray-600 text-sm">
+                  • {professional.customers} served
+                </Text>
+                <Text className="text-gray-600 text-sm">
+                  • {professional.rating}/5 average rating
+                </Text>
+              </View>
+
+              <View className="bg-gray-50 rounded-2xl p-4">
+                <Text className="text-gray-900 font-semibold mb-1">
+                  Quality Assurance
+                </Text>
+                <Text className="text-gray-500 text-sm mb-2">
+                  Customer Satisfaction Guarantee
+                </Text>
+                <Text className="text-gray-600 text-sm">
+                  • {professional.reviewCount} with positive feedback
+                </Text>
+                <Text className="text-gray-600 text-sm">
+                  • {professional.rating}/5 average customer rating
+                </Text>
+                <Text className="text-gray-600 text-sm">
+                  • 100% satisfaction guarantee
+                </Text>
+              </View>
             </View>
           </View>
         );
@@ -202,28 +222,27 @@ const ServiceDetails = () => {
             <View className="space-y-4">
               {[
                 {
-                  name: "Sarah Johnson",
+                  name: `${professional.name.split(" ")[0]}'s Customer`,
                   rating: 5,
                   date: "2 days ago",
-                  comment:
-                    "Excellent work! Julian was professional, punctual, and the quality of painting was outstanding.",
-                  avatar: "https://i.pravatar.cc/40?img=10",
+                  comment: `${professional.name} provided excellent service. Professional, punctual, and the quality of work exceeded our expectations. Highly recommended for ${professional.profession.split(" • ")[0].toLowerCase()} services!`,
+                  avatar: professional.reviewAvatars[0],
                 },
                 {
-                  name: "Mike Chen",
+                  name: "Satisfied Customer",
                   rating: 5,
                   date: "1 week ago",
-                  comment:
-                    "Great attention to detail and very clean work. Highly recommended!",
-                  avatar: "https://i.pravatar.cc/40?img=11",
+                  comment: `Outstanding service! ${professional.name} was professional, arrived on time, and completed the work efficiently. The ${professional.profession.split(" • ")[0].toLowerCase()} service was exactly what we needed. Will definitely hire again!`,
+                  avatar: professional.reviewAvatars[1],
                 },
                 {
-                  name: "Emily Davis",
+                  name: "Happy Client",
                   rating: 4,
                   date: "2 weeks ago",
-                  comment:
-                    "Good quality work and reasonable pricing. Will hire again for future projects.",
-                  avatar: "https://i.pravatar.cc/40?img=12",
+                  comment: `Good quality work and reasonable pricing. ${professional.name} delivered exactly what was promised. Will hire again for future projects.`,
+                  avatar:
+                    professional.reviewAvatars[2] ||
+                    professional.reviewAvatars[0],
                 },
               ].map((review, index) => (
                 <View
@@ -285,12 +304,7 @@ const ServiceDetails = () => {
       {/* Header */}
       <View className="bg-white px-4 py-3 border-b border-gray-200">
         <View className="flex-row items-center justify-between mb-3">
-          <TouchableOpacity
-            onPress={() => {
-              setShowExitBanner(true);
-            }}
-            className="p-2 -ml-2"
-          >
+          <TouchableOpacity onPress={() => router.back()} className="p-2 -ml-2">
             <Ionicons name="arrow-back" size={24} color="#374151" />
           </TouchableOpacity>
 
@@ -460,6 +474,7 @@ const ServiceDetails = () => {
         type="success"
         icon="construct"
         loading={isBooking}
+        showCancel={true}
       />
     </SafeAreaView>
   );

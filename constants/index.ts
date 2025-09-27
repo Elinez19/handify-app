@@ -255,6 +255,145 @@ export const serviceCards = [
   },
 ];
 
+// Service-specific professional data
+export const serviceProfessionals = {
+  1: {
+    // Home Deep Cleaning
+    id: 1,
+    name: "Sarah Johnson",
+    profession: "Cleaning Specialist • Housekeeper",
+    rate: "₹2,499/service",
+    rating: "4.8",
+    reviewCount: "127 Reviews",
+    experience: "8 yrs Experience",
+    customers: "500+ Customers",
+    badge: "Top Cleaner",
+    image: "https://i.pravatar.cc/300?img=1",
+    description:
+      "Sarah is a professional cleaning specialist with 8 years of experience in residential and commercial cleaning. She specializes in deep cleaning, move-in/move-out cleaning, and post-construction cleanup. Sarah is known for her attention to detail and eco-friendly cleaning methods.",
+    hourlyFee: "₹2,499.00",
+    teamWorks: "₹4,999.00 (2-3 days)",
+    reviewAvatars: [
+      "https://i.pravatar.cc/40?img=1",
+      "https://i.pravatar.cc/40?img=2",
+      "https://i.pravatar.cc/40?img=3",
+    ],
+    availability: "Available today",
+    responseTime: "Within 2 hours",
+    specialties: ["Deep Cleaning", "Eco-friendly Products", "Move-in/Move-out"],
+    languages: ["English", "Hindi"],
+    location: "Within 5km radius",
+  },
+  2: {
+    // Plumbing Repair
+    id: 2,
+    name: "Mike Rodriguez",
+    profession: "Plumber • Emergency Repair",
+    rate: "₹1,299/service",
+    rating: "4.9",
+    reviewCount: "89 Reviews",
+    experience: "12 yrs Experience",
+    customers: "300+ Customers",
+    badge: "Emergency Expert",
+    image: "https://i.pravatar.cc/300?img=2",
+    description:
+      "Mike is a licensed plumber with 12 years of experience in residential and commercial plumbing. He specializes in emergency repairs, pipe installations, and water heater services. Available 24/7 for urgent plumbing issues.",
+    hourlyFee: "₹1,299.00",
+    teamWorks: "₹2,499.00 (2-4 hours)",
+    reviewAvatars: [
+      "https://i.pravatar.cc/40?img=5",
+      "https://i.pravatar.cc/40?img=6",
+      "https://i.pravatar.cc/40?img=7",
+    ],
+    availability: "Available 24/7",
+    responseTime: "Within 1 hour",
+    specialties: ["Emergency Repairs", "Pipe Installation", "Water Heater"],
+    languages: ["English", "Spanish"],
+    location: "Within 10km radius",
+  },
+  3: {
+    // Interior Painting
+    id: 3,
+    name: "Julian Marcu Elian",
+    profession: "Painter • Color Consultant",
+    rate: "₹3,999/project",
+    rating: "4.7",
+    reviewCount: "203 Reviews",
+    experience: "13 yrs Experience",
+    customers: "2000+ Customers",
+    badge: "Best Top Painter",
+    image: "https://i.pravatar.cc/300?img=50",
+    description:
+      "Julian is a highly skilled, professional painter with over 13 years of experience in residential and commercial painting. His expertise includes interior and exterior finishing, color consultation, and surface preparation. Julian is known for his attention to detail, punctuality, and ability to transform spaces with quality workmanship.",
+    hourlyFee: "₹3,999.00",
+    teamWorks: "₹7,999.00 (3-5 days)",
+    reviewAvatars: [
+      "https://i.pravatar.cc/40?img=8",
+      "https://i.pravatar.cc/40?img=9",
+      "https://i.pravatar.cc/40?img=10",
+    ],
+    availability: "Available next week",
+    responseTime: "Within 4 hours",
+    specialties: ["Interior Painting", "Color Consultation", "Surface Prep"],
+    languages: ["English", "Romanian"],
+    location: "Within 15km radius",
+  },
+  4: {
+    // Appliance Repair
+    id: 4,
+    name: "David Chen",
+    profession: "Appliance Technician • Repair Expert",
+    rate: "₹899/service",
+    rating: "4.6",
+    reviewCount: "156 Reviews",
+    experience: "10 yrs Experience",
+    customers: "800+ Customers",
+    badge: "Certified Technician",
+    image: "https://i.pravatar.cc/300?img=3",
+    description:
+      "David is a certified appliance technician with 10 years of experience repairing all major home appliances. He specializes in refrigerators, washing machines, dryers, and dishwashers. David provides same-day service for most common issues.",
+    hourlyFee: "₹899.00",
+    teamWorks: "₹1,799.00 (1-2 hours)",
+    reviewAvatars: [
+      "https://i.pravatar.cc/40?img=13",
+      "https://i.pravatar.cc/40?img=14",
+      "https://i.pravatar.cc/40?img=15",
+    ],
+    availability: "Available today",
+    responseTime: "Within 3 hours",
+    specialties: ["Refrigerator Repair", "Washing Machine", "Dishwasher"],
+    languages: ["English", "Mandarin"],
+    location: "Within 8km radius",
+  },
+  5: {
+    // Laundry Service
+    id: 5,
+    name: "Emma Thompson",
+    profession: "Laundry Specialist • Dry Cleaner",
+    rate: "₹199/load",
+    rating: "4.8",
+    reviewCount: "94 Reviews",
+    experience: "6 yrs Experience",
+    customers: "400+ Customers",
+    badge: "Quality Service",
+    image: "https://i.pravatar.cc/300?img=4",
+    description:
+      "Emma runs a professional laundry and dry cleaning service with 6 years of experience. She specializes in delicate fabrics, stain removal, and same-day service. Pickup and delivery available at your convenience.",
+    hourlyFee: "₹199.00",
+    teamWorks: "₹399.00 (Same day)",
+    reviewAvatars: [
+      "https://i.pravatar.cc/40?img=16",
+      "https://i.pravatar.cc/40?img=17",
+      "https://i.pravatar.cc/40?img=18",
+    ],
+    availability: "Available daily",
+    responseTime: "Within 1 hour",
+    specialties: ["Dry Cleaning", "Stain Removal", "Delicate Fabrics"],
+    languages: ["English", "French"],
+    location: "Within 3km radius",
+  },
+};
+
 export const data = {
   onboarding,
   workCategories,
@@ -262,4 +401,5 @@ export const data = {
   topRatedProviders,
   ongoingServices,
   serviceCards,
+  serviceProfessionals,
 };
