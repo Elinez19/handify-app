@@ -1,6 +1,6 @@
 import ConfirmationModal from "@/components/ConfirmationModal";
 import NoticeBanner from "@/components/NoticeBanner";
-import { serviceProfessionals } from "@/constants";
+import { images, serviceProfessionals } from "@/constants";
 import { Ionicons } from "@expo/vector-icons";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import React, { useState } from "react";
@@ -317,12 +317,12 @@ const ServiceDetails = () => {
 
           <View className="flex-row items-center space-x-2">
             <View className="bg-gray-100 rounded-lg px-3 py-2 flex-row items-center">
-              <Ionicons name="brush" size={16} color="#6B7280" />
-              <Text className="text-gray-700 font-medium ml-1">Painter</Text>
-              <Ionicons name="checkmark" size={16} color="#10B981" />
+              <Ionicons name="brush" size={16} color="#F97316" />
+              <Text className="text-orange-500 font-medium ml-1">Painter</Text>
+              <Ionicons name="chevron-down" size={16} color="#F97316" />
             </View>
             <TouchableOpacity className="p-2">
-              <Ionicons name="share" size={20} color="#374151" />
+              <Ionicons name="share-outline" size={20} color="#374151" />
             </TouchableOpacity>
           </View>
         </View>
@@ -331,81 +331,114 @@ const ServiceDetails = () => {
       <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
         {/* Professional Details */}
         <View className="bg-white px-6 py-6">
-          <View className="items-center mb-6">
-            <View className="bg-orange-100 px-3 py-1 rounded-full mb-2">
-              <Text className="text-orange-600 text-sm font-medium">
-                {professional.badge}
-              </Text>
-            </View>
-
-            <Text className="text-2xl font-bold text-gray-900 text-center mb-1">
-              {professional.name}
-            </Text>
-
-            <Text className="text-gray-600 text-center mb-2">
-              {professional.profession}
-            </Text>
-
-            <Text className="text-orange-500 font-bold text-lg mb-4">
-              {professional.rate}
-            </Text>
-
-            <View className="flex-row items-center mb-6">
-              <View className="flex-row">
-                {professional.reviewAvatars.map((avatar, index) => (
-                  <Image
-                    key={index}
-                    source={{ uri: avatar }}
-                    className="w-8 h-8 rounded-full border-2 border-white"
-                    style={{
-                      marginLeft: index > 0 ? -8 : 0,
-                      zIndex: 3 - index,
-                    }}
-                  />
-                ))}
+          <View className="flex-row items-start mb-6">
+            {/* Left Side - Text Content */}
+            <View className="flex-1 pr-4">
+              <View className="bg-orange-100 px-3 py-1 rounded-full mb-2 self-start">
+                <Text className="text-orange-600 text-sm font-medium">
+                  {professional.badge}
+                </Text>
               </View>
-              <Text className="text-gray-600 text-sm ml-2">
-                {professional.reviewCount}
+
+              <Text className="text-2xl font-bold text-gray-900 mb-1">
+                {professional.name}
               </Text>
+
+              <Text className="text-gray-600 mb-2">
+                {professional.profession}
+              </Text>
+
+              <Text className="text-orange-500 font-bold text-lg mb-4">
+                {professional.rate}
+              </Text>
+
+              <View className="flex-row items-center">
+                <View className="flex-row">
+                  {professional.reviewAvatars.map((avatar, index) => (
+                    <Image
+                      key={index}
+                      source={{ uri: avatar }}
+                      className="w-8 h-8 rounded-full border-2 border-white"
+                      style={{
+                        marginLeft: index > 0 ? -8 : 0,
+                        zIndex: 3 - index,
+                      }}
+                    />
+                  ))}
+                </View>
+                <Text className="text-gray-600 text-sm ml-2">
+                  {professional.reviewCount}
+                </Text>
+              </View>
             </View>
 
-            <Image
-              source={{ uri: professional.image }}
-              className="w-48 h-48 rounded-3xl mb-6"
-              resizeMode="cover"
-            />
+            {/* Right Side - Image */}
+            <View className="mr-4">
+              <Image
+                source={images.onboarding1}
+                className="w-48 h-48 rounded-3xl"
+                resizeMode="cover"
+              />
+            </View>
           </View>
 
-          {/* Key Metrics */}
-          <View className="flex-row justify-between mb-6">
-            <View className="bg-orange-50 rounded-2xl p-4 flex-1 mr-2">
+          {/* Three Cards Below Hero Section */}
+          <View className="flex-row justify-between">
+            <View
+              className="bg-white rounded-2xl p-4 flex-1 mr-1 border border-gray-200"
+              style={{
+                shadowColor: "#000",
+                shadowOffset: { width: 0, height: 4 },
+                shadowOpacity: 0.1,
+                shadowRadius: 8,
+                elevation: 5,
+              }}
+            >
               <View className="items-center">
                 <View className="w-10 h-10 bg-orange-100 rounded-full items-center justify-center mb-2">
                   <Ionicons name="briefcase" size={20} color="#F97316" />
                 </View>
-                <Text className="text-gray-900 font-semibold text-center">
+                <Text className="text-gray-900 font-semibold text-center text-sm">
                   {professional.experience}
                 </Text>
               </View>
             </View>
 
-            <View className="bg-orange-50 rounded-2xl p-4 flex-1 mx-1">
+            <View
+              className="bg-white rounded-2xl p-4 flex-1 mx-1 border border-gray-200"
+              style={{
+                shadowColor: "#000",
+                shadowOffset: { width: 0, height: 4 },
+                shadowOpacity: 0.1,
+                shadowRadius: 8,
+                elevation: 5,
+              }}
+            >
               <View className="items-center">
                 <View className="w-10 h-10 bg-orange-100 rounded-full items-center justify-center mb-2">
                   <Ionicons name="star" size={20} color="#F97316" />
                 </View>
-                <Text className="text-gray-900 font-semibold text-center">
+                <Text className="text-gray-900 font-semibold text-center text-sm">
                   {professional.rating} Rating
                 </Text>
               </View>
             </View>
 
-            <View className="bg-orange-50 rounded-2xl p-4 flex-1 ml-2">
+            <View
+              className="bg-white rounded-2xl p-4 flex-1 ml-1 border border-gray-200"
+              style={{
+                shadowColor: "#000",
+                shadowOffset: { width: 0, height: 4 },
+                shadowOpacity: 0.1,
+                shadowRadius: 8,
+                elevation: 5,
+              }}
+            >
               <View className="items-center">
                 <View className="w-10 h-10 bg-orange-100 rounded-full items-center justify-center mb-2">
                   <Ionicons name="people" size={20} color="#F97316" />
                 </View>
-                <Text className="text-gray-900 font-semibold text-center">
+                <Text className="text-gray-900 font-semibold text-center text-sm">
                   {professional.customers}
                 </Text>
               </View>
