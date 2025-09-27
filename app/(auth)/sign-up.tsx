@@ -1,7 +1,6 @@
 import { router } from "expo-router";
 import { useState } from "react";
 import {
-  Image,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
@@ -12,6 +11,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import CustomButton from "@/components/CustomButton";
+import { Icon } from "@/components/Icon";
 import InputField from "@/components/InputField";
 import { icons } from "@/constants";
 
@@ -49,10 +49,15 @@ const SignUp = () => {
             }
             className="mr-4"
           >
-            <Image source={icons.backArrow} className="w-6 h-6" />
+            <Icon icon={icons.backArrow} size={24} color="#000" />
           </TouchableOpacity>
           <View className="flex-1 items-center">
-            <Image source={icons.person} className="w-8 h-8 mb-2" />
+            <Icon
+              icon={icons.person}
+              size={32}
+              color="#FF5E0E"
+              style={{ marginBottom: 8 }}
+            />
           </View>
         </View>
 
@@ -65,7 +70,7 @@ const SignUp = () => {
           showsVerticalScrollIndicator={false}
         >
           <View className="mb-8">
-            <Text className="text-[#8B4513] text-3xl font-JakartaBold mb-2">
+            <Text className="text-primary-400 text-3xl font-JakartaBold mb-2">
               Create New Account
             </Text>
             <Text className="text-[#666666] text-lg font-JakartaMedium">
@@ -125,7 +130,7 @@ const SignUp = () => {
               Already Have Account?{" "}
             </Text>
             <TouchableOpacity onPress={() => router.push("/(auth)/sign-in")}>
-              <Text className="text-[#8B4513] text-lg font-JakartaSemiBold">
+              <Text className="text-primary-400 text-lg font-JakartaSemiBold">
                 Log In
               </Text>
             </TouchableOpacity>

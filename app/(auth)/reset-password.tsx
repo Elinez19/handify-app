@@ -1,7 +1,6 @@
 import { router } from "expo-router";
 import { useState } from "react";
 import {
-  Image,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
@@ -12,6 +11,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import CustomButton from "@/components/CustomButton";
+import { Icon } from "@/components/Icon";
 import InputField from "@/components/InputField";
 import { icons } from "@/constants";
 
@@ -59,10 +59,15 @@ const ResetPassword = () => {
         {/* Header */}
         <View className="flex-row items-center px-6 pt-4 pb-6">
           <TouchableOpacity onPress={() => router.back()} className="mr-4">
-            <Image source={icons.backArrow} className="w-6 h-6" />
+            <Icon icon={icons.backArrow} size={24} color="#000" />
           </TouchableOpacity>
           <View className="flex-1 items-center">
-            <Image source={icons.lock} className="w-8 h-8 mb-2" />
+            <Icon
+              icon={icons.lock}
+              size={32}
+              color="#FF5E0E"
+              style={{ marginBottom: 8 }}
+            />
           </View>
         </View>
 
@@ -75,7 +80,7 @@ const ResetPassword = () => {
           showsVerticalScrollIndicator={false}
         >
           <View className="mb-8">
-            <Text className="text-[#8B4513] text-3xl font-JakartaBold mb-2">
+            <Text className="text-primary-400 text-3xl font-JakartaBold mb-2">
               Reset Password
             </Text>
             <Text className="text-[#666666] text-lg font-JakartaMedium">
@@ -100,10 +105,7 @@ const ResetPassword = () => {
                 onPress={() => setShowNewPassword(!showNewPassword)}
                 className="absolute right-4 top-12"
               >
-                <Image
-                  source={showNewPassword ? icons.eyecross : icons.eyecross}
-                  className="w-5 h-5"
-                />
+                <Icon icon={icons.eyecross} size={20} color="#9CA3AF" />
               </TouchableOpacity>
             </View>
 
@@ -122,10 +124,7 @@ const ResetPassword = () => {
                 onPress={() => setShowConfirmPassword(!showConfirmPassword)}
                 className="absolute right-4 top-12"
               >
-                <Image
-                  source={showConfirmPassword ? icons.eyecross : icons.eyecross}
-                  className="w-5 h-5"
-                />
+                <Icon icon={icons.eyecross} size={20} color="#9CA3AF" />
               </TouchableOpacity>
             </View>
           </View>
@@ -173,7 +172,7 @@ const ResetPassword = () => {
               Remember your password?{" "}
             </Text>
             <TouchableOpacity onPress={() => router.push("/(auth)/sign-in")}>
-              <Text className="text-[#8B4513] text-lg font-JakartaSemiBold">
+              <Text className="text-primary-400 text-lg font-JakartaSemiBold">
                 Sign In
               </Text>
             </TouchableOpacity>

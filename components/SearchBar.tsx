@@ -1,5 +1,6 @@
-import { Image, TextInput, TouchableOpacity, View } from "react-native";
+import { TextInput, TouchableOpacity, View } from "react-native";
 
+import { Icon } from "@/components/Icon";
 import { icons } from "@/constants";
 
 interface SearchBarProps {
@@ -21,7 +22,12 @@ const SearchBar = ({
     <View
       className={`flex-row items-center bg-white rounded-2xl px-4 py-3 shadow-sm ${className}`}
     >
-      <Image source={icons.search} className="w-5 h-5 mr-3" />
+      <Icon
+        icon={icons.search}
+        size={20}
+        color="#9CA3AF"
+        style={{ marginRight: 12 }}
+      />
       <TextInput
         className="flex-1 text-base font-JakartaMedium text-gray-800"
         placeholder={placeholder}
@@ -30,7 +36,7 @@ const SearchBar = ({
         onChangeText={onChangeText}
       />
       <TouchableOpacity onPress={onFilterPress} className="ml-2">
-        <Image source={icons.list} className="w-5 h-5" />
+        <Icon icon={icons.list} size={20} color="#9CA3AF" />
       </TouchableOpacity>
     </View>
   );

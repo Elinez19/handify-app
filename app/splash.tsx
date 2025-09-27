@@ -16,7 +16,7 @@ const SplashScreen = () => {
   }, []);
 
   return (
-    <SafeAreaView className="flex-1 bg-[#8B4513]">
+    <SafeAreaView className="flex-1 bg-primary-400">
       <View className="flex-1 items-center justify-center px-8">
         {/* App Logo */}
         <View className="items-center mb-12">

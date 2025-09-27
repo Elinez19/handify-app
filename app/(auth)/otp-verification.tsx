@@ -1,7 +1,6 @@
 import { router } from "expo-router";
 import { useRef, useState } from "react";
 import {
-  Image,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
@@ -13,6 +12,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import CustomButton from "@/components/CustomButton";
+import { Icon } from "@/components/Icon";
 import { icons } from "@/constants";
 
 const OTPVerification = () => {
@@ -66,10 +66,15 @@ const OTPVerification = () => {
         {/* Header */}
         <View className="flex-row items-center px-6 pt-4 pb-6">
           <TouchableOpacity onPress={() => router.back()} className="mr-4">
-            <Image source={icons.backArrow} className="w-6 h-6" />
+            <Icon icon={icons.backArrow} size={24} color="#000" />
           </TouchableOpacity>
           <View className="flex-1 items-center">
-            <Image source={icons.email} className="w-8 h-8 mb-2" />
+            <Icon
+              icon={icons.email}
+              size={32}
+              color="#FF5E0E"
+              style={{ marginBottom: 8 }}
+            />
           </View>
         </View>
 
@@ -82,7 +87,7 @@ const OTPVerification = () => {
           showsVerticalScrollIndicator={false}
         >
           <View className="mb-8">
-            <Text className="text-[#8B4513] text-3xl font-JakartaBold mb-2">
+            <Text className="text-primary-400 text-3xl font-JakartaBold mb-2">
               Verify OTP
             </Text>
             <Text className="text-[#666666] text-lg font-JakartaMedium">
@@ -98,7 +103,7 @@ const OTPVerification = () => {
                 ref={(ref) => {
                   if (ref) inputRefs.current[index] = ref;
                 }}
-                className="w-12 h-12 border-2 border-[#E5E5E5] rounded-lg text-center text-xl font-JakartaBold text-[#8B4513]"
+                className="w-12 h-12 border-2 border-[#E5E5E5] rounded-lg text-center text-xl font-JakartaBold text-primary-400"
                 value={digit}
                 onChangeText={(value) => handleOtpChange(value, index)}
                 onKeyPress={({ nativeEvent }) =>
@@ -123,7 +128,7 @@ const OTPVerification = () => {
                 disabled={isResending}
                 className="opacity-80"
               >
-                <Text className="text-[#8B4513] text-base font-JakartaSemiBold">
+                <Text className="text-primary-400 text-base font-JakartaSemiBold">
                   {isResending ? "Sending..." : "Resend Code"}
                 </Text>
               </TouchableOpacity>
@@ -153,7 +158,7 @@ const OTPVerification = () => {
             <TouchableOpacity
               onPress={() => router.push("/(auth)/forgot-password")}
             >
-              <Text className="text-[#8B4513] text-lg font-JakartaSemiBold">
+              <Text className="text-primary-400 text-lg font-JakartaSemiBold">
                 Change Email
               </Text>
             </TouchableOpacity>

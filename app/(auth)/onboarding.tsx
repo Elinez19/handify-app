@@ -23,7 +23,7 @@ const OnboardingScreen = () => {
           }}
           className="px-4 py-2"
         >
-          <Text className="text-[#8B4513] text-lg font-JakartaSemiBold">
+          <Text className="text-primary-400 text-lg font-JakartaSemiBold">
             Skip
           </Text>
         </TouchableOpacity>
@@ -40,7 +40,7 @@ const OnboardingScreen = () => {
           }}
           dot={<View className="w-4 h-2 mx-1 bg-[#E5E5E5] rounded-full" />}
           activeDot={
-            <View className="w-8 h-3 mx-1 bg-[#8B4513] rounded-full" />
+            <View className="w-8 h-3 mx-1 bg-primary-400 rounded-full" />
           }
           onIndexChanged={(index) => setActiveIndex(index)}
         >
@@ -60,7 +60,7 @@ const OnboardingScreen = () => {
 
               {/* Text Content */}
               <View className="items-center mb-12">
-                <Text className="text-[#8B4513] text-3xl font-JakartaBold text-center mb-4 leading-10">
+                <Text className="text-primary-400 text-3xl font-JakartaBold text-center mb-4 leading-10">
                   {item.title}
                 </Text>
                 <Text className="text-[#666666] text-lg font-JakartaMedium text-center leading-7 px-4">

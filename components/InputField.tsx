@@ -1,5 +1,4 @@
 import {
-  Image,
   Keyboard,
   KeyboardAvoidingView,
   Platform,
@@ -9,6 +8,7 @@ import {
   View,
 } from "react-native";
 
+import { Icon } from "@/components/Icon";
 import { InputFieldProps } from "@/types/type";
 
 const InputField = ({
@@ -35,7 +35,12 @@ const InputField = ({
             className={`flex flex-row justify-start items-center relative bg-neutral-100 rounded-full border border-neutral-100 focus:border-primary-500  ${containerStyle}`}
           >
             {icon && (
-              <Image source={icon} className={`w-6 h-6 ml-4 ${iconStyle}`} />
+              <Icon
+                icon={icon}
+                size={24}
+                color="#9CA3AF"
+                style={{ marginLeft: 16 }}
+              />
             )}
             <TextInput
               className={`rounded-full p-4 font-JakartaSemiBold text-[15px] flex-1 ${inputStyle} text-left`}

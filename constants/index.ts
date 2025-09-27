@@ -1,28 +1,3 @@
-import arrowDown from "@/assets/icons/arrow-down.png";
-import arrowUp from "@/assets/icons/arrow-up.png";
-import backArrow from "@/assets/icons/back-arrow.png";
-import chat from "@/assets/icons/chat.png";
-import checkmark from "@/assets/icons/check.png";
-import close from "@/assets/icons/close.png";
-import dollar from "@/assets/icons/dollar.png";
-import email from "@/assets/icons/email.png";
-import eyecross from "@/assets/icons/eyecross.png";
-import google from "@/assets/icons/google.png";
-import home from "@/assets/icons/home.png";
-import list from "@/assets/icons/list.png";
-import lock from "@/assets/icons/lock.png";
-import map from "@/assets/icons/map.png";
-import marker from "@/assets/icons/marker.png";
-import out from "@/assets/icons/out.png";
-import person from "@/assets/icons/person.png";
-import pin from "@/assets/icons/pin.png";
-import point from "@/assets/icons/point.png";
-import profile from "@/assets/icons/profile.png";
-import search from "@/assets/icons/search.png";
-import selectedMarker from "@/assets/icons/selected-marker.png";
-import star from "@/assets/icons/star.png";
-import target from "@/assets/icons/target.png";
-import to from "@/assets/icons/to.png";
 import check from "@/assets/images/check.png";
 import getStarted from "@/assets/images/get-started.png";
 import message from "@/assets/images/message.png";
@@ -33,6 +8,12 @@ import onboarding1 from "@/assets/images/onboarding-image.png";
 import signUpCar from "@/assets/images/signup-car.png";
 import splashIcon from "@/assets/images/splash-icon.png";
 import splash from "@/assets/images/splash.png";
+import { Ionicons, MaterialIcons } from "@expo/vector-icons";
+
+type IconConfig = {
+  name: any;
+  library: any;
+};
 
 export const images = {
   onboarding1,
@@ -47,32 +28,32 @@ export const images = {
   splash,
 };
 
-export const icons = {
-  arrowDown,
-  arrowUp,
-  backArrow,
-  chat,
-  checkmark,
-  close,
-  dollar,
-  email,
-  eyecross,
-  google,
-  home,
-  list,
-  lock,
-  map,
-  marker,
-  out,
-  person,
-  pin,
-  point,
-  profile,
-  search,
-  selectedMarker,
-  star,
-  target,
-  to,
+export const icons: Record<string, IconConfig> = {
+  arrowDown: { name: "chevron-down", library: Ionicons },
+  arrowUp: { name: "chevron-up", library: Ionicons },
+  backArrow: { name: "arrow-back", library: Ionicons },
+  chat: { name: "chatbubble", library: Ionicons },
+  checkmark: { name: "checkmark", library: Ionicons },
+  close: { name: "close", library: Ionicons },
+  dollar: { name: "attach-money", library: MaterialIcons },
+  email: { name: "mail", library: Ionicons },
+  eyecross: { name: "eye-off", library: Ionicons },
+  google: { name: "logo-google", library: Ionicons },
+  home: { name: "home", library: Ionicons },
+  list: { name: "list", library: Ionicons },
+  lock: { name: "lock-closed", library: Ionicons },
+  map: { name: "map", library: Ionicons },
+  marker: { name: "location", library: Ionicons },
+  out: { name: "log-out", library: Ionicons },
+  person: { name: "person", library: Ionicons },
+  pin: { name: "pin", library: Ionicons },
+  point: { name: "radio-button-on", library: Ionicons },
+  profile: { name: "person-circle", library: Ionicons },
+  search: { name: "search", library: Ionicons },
+  selectedMarker: { name: "location", library: Ionicons },
+  star: { name: "star", library: Ionicons },
+  target: { name: "camera", library: Ionicons },
+  to: { name: "arrow-forward", library: Ionicons },
 };
 
 export const onboarding = [
@@ -99,6 +80,88 @@ export const onboarding = [
   },
 ];
 
+export const workCategories = [
+  { id: "all", title: "All" },
+  { id: "ongoing", title: "On Going Works", badge: "16" },
+  { id: "completed", title: "Completed Works" },
+];
+
+export const serviceCategories = [
+  { id: "repair", name: "Repair", icon: "construct" },
+  { id: "cleaning", name: "Cleaning", icon: "sparkles" },
+  { id: "painting", name: "Painting", icon: "color-palette" },
+  { id: "plumbing", name: "Plumbing", icon: "water" },
+  { id: "laundry", name: "Laundry", icon: "shirt" },
+];
+
+export const topRatedProviders = [
+  {
+    id: 1,
+    name: "Antony Jose",
+    profession: "Professional Painter",
+    rate: "₹349/hrs",
+    rating: "4.7 (5k)",
+    image: "https://i.pravatar.cc/150?img=5",
+  },
+  {
+    id: 2,
+    name: "David Michel",
+    profession: "Professional Painter",
+    rate: "₹349/hrs",
+    rating: "4.8 (3k)",
+    image: "https://i.pravatar.cc/150?img=12",
+  },
+  {
+    id: 3,
+    name: "Sarah Wilson",
+    profession: "Professional Cleaner",
+    rate: "₹299/hrs",
+    rating: "4.9 (2k)",
+    image: "https://i.pravatar.cc/150?img=20",
+  },
+  {
+    id: 4,
+    name: "Chris Evans",
+    profession: "Professional Plumber",
+    rate: "₹399/hrs",
+    rating: "4.6 (4k)",
+    image: "https://i.pravatar.cc/150?img=30",
+  },
+  {
+    id: 5,
+    name: "Sophia Lee",
+    profession: "Professional Cleaner",
+    rate: "₹259/hrs",
+    rating: "4.8 (2.5k)",
+    image: "https://i.pravatar.cc/150?img=40",
+  },
+];
+
+export const ongoingServices = [
+  {
+    id: 1,
+    name: "David Michel",
+    profession: "Professional Painter",
+    rate: "₹349/hrs",
+    progress: 75,
+    progressText: "Almost done!",
+    image: "https://i.pravatar.cc/100?img=11",
+  },
+  {
+    id: 2,
+    name: "Sarah Wilson",
+    profession: "Professional Cleaner",
+    rate: "₹299/hrs",
+    progress: 40,
+    progressText: "In progress...",
+    image: "https://i.pravatar.cc/100?img=15",
+  },
+];
+
 export const data = {
   onboarding,
+  workCategories,
+  serviceCategories,
+  topRatedProviders,
+  ongoingServices,
 };

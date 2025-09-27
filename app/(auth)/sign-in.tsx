@@ -1,7 +1,6 @@
 import { router } from "expo-router";
 import { useState } from "react";
 import {
-  Image,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
@@ -12,6 +11,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import CustomButton from "@/components/CustomButton";
+import { Icon } from "@/components/Icon";
 import InputField from "@/components/InputField";
 import { icons } from "@/constants";
 
@@ -48,10 +48,15 @@ const SignIn = () => {
             }
             className="mr-4"
           >
-            <Image source={icons.backArrow} className="w-6 h-6" />
+            <Icon icon={icons.backArrow} size={24} color="#000" />
           </TouchableOpacity>
           <View className="flex-1 items-center">
-            <Image source={icons.person} className="w-8 h-8 mb-2" />
+            <Icon
+              icon={icons.person}
+              size={32}
+              color="#FF5E0E"
+              style={{ marginBottom: 8 }}
+            />
           </View>
         </View>
 
@@ -64,7 +69,7 @@ const SignIn = () => {
           showsVerticalScrollIndicator={false}
         >
           <View className="mb-8">
-            <Text className="text-[#8B4513] text-3xl font-JakartaBold mb-2">
+            <Text className="text-primary-400 text-3xl font-JakartaBold mb-2">
               Welcome back
             </Text>
             <Text className="text-[#666666] text-lg font-JakartaMedium">
@@ -100,12 +105,12 @@ const SignIn = () => {
               className="flex-row items-center"
             >
               <View
-                className={`w-5 h-5 border-2 border-[#8B4513] rounded mr-2 ${
-                  rememberMe ? "bg-[#8B4513]" : "bg-transparent"
+                className={`w-5 h-5 border-2 border-primary-400 rounded mr-2 ${
+                  rememberMe ? "bg-primary-400" : "bg-transparent"
                 }`}
               >
                 {rememberMe && (
-                  <Image source={icons.checkmark} className="w-4 h-4" />
+                  <Icon icon={icons.checkmark} size={16} color="white" />
                 )}
               </View>
               <Text className="text-[#666666] text-lg font-JakartaMedium">
@@ -116,7 +121,7 @@ const SignIn = () => {
             <TouchableOpacity
               onPress={() => router.push("/(auth)/forgot-password")}
             >
-              <Text className="text-[#8B4513] text-lg font-JakartaSemiBold">
+              <Text className="text-primary-400 text-lg font-JakartaSemiBold">
                 Forgot password?
               </Text>
             </TouchableOpacity>
@@ -132,7 +137,7 @@ const SignIn = () => {
               Don&apos;t have an account?{" "}
             </Text>
             <TouchableOpacity onPress={() => router.push("/(auth)/sign-up")}>
-              <Text className="text-[#8B4513] text-lg font-JakartaSemiBold">
+              <Text className="text-primary-400 text-lg font-JakartaSemiBold">
                 Sign up
               </Text>
             </TouchableOpacity>
