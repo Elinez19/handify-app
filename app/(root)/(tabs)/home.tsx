@@ -1,11 +1,16 @@
+import ConfirmationModal from "@/components/ConfirmationModal";
+import NoticeBanner from "@/components/NoticeBanner";
+import ServiceCard from "@/components/ServiceCard";
 import {
   ongoingServices,
+  serviceCards,
   serviceCategories,
   topRatedProviders,
   workCategories,
 } from "@/constants";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
+import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import {
   Image,
@@ -22,6 +27,28 @@ const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedService, setSelectedService] = useState("Repair");
   const [searchText, setSearchText] = useState("");
+  const [showHireModal, setShowHireModal] = useState(false);
+  const [selectedProvider, setSelectedProvider] = useState<any>(null);
+  const [isHiring, setIsHiring] = useState(false);
+  const [showOfferBanner, setShowOfferBanner] = useState(true);
+  const router = useRouter();
+
+  const handleHire = (provider: any) => {
+    setSelectedProvider(provider);
+    setShowHireModal(true);
+  };
+
+  const confirmHire = async () => {
+    setIsHiring(true);
+    // Simulate API call
+    setTimeout(() => {
+      setIsHiring(false);
+      setShowHireModal(false);
+      setSelectedProvider(null);
+      // Navigate to services page or show success message
+      router.push("/(root)/(tabs)/services");
+    }, 2000);
+  };
 
   return (
     <LinearGradient
@@ -31,6 +58,20 @@ const Home = () => {
       className="flex-1"
     >
       <SafeAreaView className="flex-1">
+        {/* Special Offer Banner */}
+        <NoticeBanner
+          isVisible={showOfferBanner}
+          onClose={() => setShowOfferBanner(false)}
+          title="🎉 Special Offer!"
+          message="Get 20% off your first booking. Limited time offer! Don't miss out on this amazing deal."
+          type="offer"
+          actionText="Claim Now"
+          onAction={() => {
+            setShowOfferBanner(false);
+            router.push("/(root)/(tabs)/services");
+          }}
+          cancelText="Maybe Later"
+        />
         <ScrollView showsVerticalScrollIndicator={false}>
           {/* Header */}
           <View className="flex-row items-center justify-between px-6 py-4">
@@ -162,7 +203,11 @@ const Home = () => {
                   return (
                     <TouchableOpacity
                       key={service.id}
-                      onPress={() => setSelectedService(service.name)}
+                      onPress={() => {
+                        setSelectedService(service.name);
+                        // Navigate to services tab
+                        router.push("/(root)/(tabs)/services");
+                      }}
                       className={`w-20 h-20 rounded-2xl items-center justify-center gap-2 ${
                         isSelected ? "bg-orange-400" : "bg-white"
                       } shadow`}
@@ -192,7 +237,11 @@ const Home = () => {
               <Text className="text-black text-xl font-bold">
                 Top Rated Works
               </Text>
-              <Text className="text-orange-500 font-medium">See all</Text>
+              <TouchableOpacity
+                onPress={() => router.push("/(root)/(tabs)/services")}
+              >
+                <Text className="text-orange-500 font-medium">See all</Text>
+              </TouchableOpacity>
             </View>
 
             <Swiper
@@ -246,7 +295,10 @@ const Home = () => {
                     </Text>
 
                     {/* Hire Button */}
-                    <TouchableOpacity className="self-start mt-3 bg-orange-400 rounded-full px-5 py-2">
+                    <TouchableOpacity
+                      onPress={() => handleHire(item)}
+                      className="self-start mt-3 bg-orange-400 rounded-full px-5 py-2"
+                    >
                       <Text className="text-white font-semibold text-sm">
                         Hire
                       </Text>
@@ -257,9 +309,177 @@ const Home = () => {
             </Swiper>
           </View>
 
+          {/* Service Cards */}
+          <View className="px-6 mb-6">
+            <View className="flex-row justify-between items-center mb-4">
+              <Text className="text-black text-xl font-bold">
+                Popular Services
+              </Text>
+              <TouchableOpacity
+                onPress={() => router.push("/(root)/(tabs)/services")}
+              >
+                <Text className="text-orange-500 font-medium">See all</Text>
+              </TouchableOpacity>
+            </View>
+
+            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+              <View className="flex-row space-x-4 gap-4 mb-4">
+                {serviceCards.map((service) => (
+                  <ServiceCard
+                    key={service.id}
+                    {...service}
+                    onPress={() => {
+                      // Navigate to services tab
+                      router.push("/(root)/(tabs)/services");
+                    }}
+                  />
+                ))}
+              </View>
+            </ScrollView>
+          </View>
+
+          {/* Vertical Services Grid */}
+          <View className="px-6 mb-6">
+            <View className="flex-row justify-between items-center mb-4">
+              <Text className="text-black text-xl font-bold">All Services</Text>
+              <TouchableOpacity
+                onPress={() => router.push("/(root)/(tabs)/services")}
+              >
+                <Text className="text-orange-500 font-medium">See all</Text>
+              </TouchableOpacity>
+            </View>
+
+            <View className="space-y-4">
+              {serviceCards.map((service) => (
+                <View key={`vertical-${service.id}`} className="w-full mb-4">
+                  <View
+                    className="bg-white rounded-3xl p-4 w-full"
+                    style={{
+                      shadowColor: "#000",
+                      shadowOffset: { width: 0, height: 4 },
+                      shadowOpacity: 0.08,
+                      shadowRadius: 6,
+                      elevation: 4,
+                    }}
+                  >
+                    <TouchableOpacity
+                      onPress={() => {
+                        // Navigate to services tab
+                        router.push("/(root)/(tabs)/services");
+                      }}
+                      activeOpacity={0.8}
+                    >
+                      {/* Service Image */}
+                      <Image
+                        source={{ uri: service.image }}
+                        className="w-full h-40 rounded-2xl mb-3"
+                        resizeMode="cover"
+                      />
+
+                      {/* Badge */}
+                      <View className="absolute top-6 left-6">
+                        <View className="bg-orange-400 px-3 py-1 rounded-full">
+                          <Text className="text-white text-xs font-semibold">
+                            {service.badge}
+                          </Text>
+                        </View>
+                      </View>
+
+                      {/* Category */}
+                      <View className="absolute top-6 right-6">
+                        <View className="bg-white/90 px-3 py-1 rounded-full">
+                          <Text className="text-gray-600 text-xs font-medium">
+                            {service.category}
+                          </Text>
+                        </View>
+                      </View>
+
+                      {/* Content */}
+                      <View className="px-1">
+                        <Text className="text-black font-bold text-lg mb-1">
+                          {service.title}
+                        </Text>
+                        <Text className="text-gray-500 text-sm mb-3 leading-5">
+                          {service.description}
+                        </Text>
+
+                        {/* Price and Rating */}
+                        <View className="flex-row items-center justify-between mb-3">
+                          <Text className="text-orange-500 font-bold text-lg">
+                            {service.price}
+                          </Text>
+                          <View className="flex-row items-center">
+                            <Ionicons name="star" size={16} color="#FFD700" />
+                            <Text className="text-gray-600 text-sm ml-1">
+                              {service.rating} ({service.reviewCount})
+                            </Text>
+                          </View>
+                        </View>
+
+                        {/* Review Avatars */}
+                        <View className="flex-row items-center mb-4">
+                          <View className="flex-row">
+                            {service.reviewAvatars
+                              .slice(0, 4)
+                              .map((avatar, index) => (
+                                <Image
+                                  key={index}
+                                  source={{ uri: avatar }}
+                                  className="w-8 h-8 rounded-full border-2 border-white"
+                                  style={{
+                                    marginLeft: index > 0 ? -8 : 0,
+                                    zIndex: 4 - index,
+                                  }}
+                                />
+                              ))}
+                            {service.reviewAvatars.length > 4 && (
+                              <View
+                                className="w-8 h-8 rounded-full bg-gray-200 border-2 border-white items-center justify-center"
+                                style={{
+                                  marginLeft: -8,
+                                  zIndex: 0,
+                                }}
+                              >
+                                <Text className="text-gray-600 text-xs font-medium">
+                                  +{service.reviewAvatars.length - 4}
+                                </Text>
+                              </View>
+                            )}
+                          </View>
+                          <Text className="text-gray-500 text-xs ml-2">
+                            Customer reviews
+                          </Text>
+                        </View>
+                        <View className="bg-orange-500 rounded-md py-3 items-center">
+                          <Text className="text-white font-semibold">
+                            Book Now
+                          </Text>
+                        </View>
+                      </View>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+              ))}
+            </View>
+          </View>
+
           <View className="h-20" />
         </ScrollView>
       </SafeAreaView>
+
+      {/* Hire Confirmation Modal */}
+      <ConfirmationModal
+        isVisible={showHireModal}
+        onClose={() => setShowHireModal(false)}
+        onConfirm={confirmHire}
+        title="Confirm Hire"
+        message={`Are you sure you want to hire ${selectedProvider?.name}? This will create a service request.`}
+        confirmText="Confirm Hire"
+        cancelText="Cancel"
+        type="success"
+        icon="person-add"
+        loading={isHiring}
+      />
     </LinearGradient>
   );
 };

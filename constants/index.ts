@@ -158,10 +158,108 @@ export const ongoingServices = [
   },
 ];
 
+export const serviceCards = [
+  {
+    id: 1,
+    title: "Home Deep Cleaning",
+    description:
+      "Professional deep cleaning service for your entire home. Includes kitchen, bathrooms, living areas, and bedrooms.",
+    badge: "Popular",
+    price: "₹2,499",
+    category: "Cleaning",
+    image:
+      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop",
+    reviewAvatars: [
+      "https://i.pravatar.cc/40?img=1",
+      "https://i.pravatar.cc/40?img=2",
+      "https://i.pravatar.cc/40?img=3",
+      "https://i.pravatar.cc/40?img=4",
+    ],
+    rating: "4.8",
+    reviewCount: "127",
+  },
+  {
+    id: 2,
+    title: "Plumbing Repair",
+    description:
+      "Expert plumbing services for leaks, clogs, and installations. 24/7 emergency service available.",
+    badge: "Emergency",
+    price: "₹1,299",
+    category: "Plumbing",
+    image:
+      "https://images.unsplash.com/photo-1581578731548-c63695cc4942?w=400&h=300&fit=crop",
+    reviewAvatars: [
+      "https://i.pravatar.cc/40?img=5",
+      "https://i.pravatar.cc/40?img=6",
+      "https://i.pravatar.cc/40?img=7",
+    ],
+    rating: "4.9",
+    reviewCount: "89",
+  },
+  {
+    id: 3,
+    title: "Interior Painting",
+    description:
+      "Professional interior painting with premium quality paints. Transform your space with expert color consultation.",
+    badge: "Premium",
+    price: "₹3,999",
+    category: "Painting",
+    image:
+      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&h=300&fit=crop",
+    reviewAvatars: [
+      "https://i.pravatar.cc/40?img=8",
+      "https://i.pravatar.cc/40?img=9",
+      "https://i.pravatar.cc/40?img=10",
+      "https://i.pravatar.cc/40?img=11",
+      "https://i.pravatar.cc/40?img=12",
+    ],
+    rating: "4.7",
+    reviewCount: "203",
+  },
+  {
+    id: 4,
+    title: "Appliance Repair",
+    description:
+      "Fix your home appliances with certified technicians. Same-day service for most common issues.",
+    badge: "Fast",
+    price: "₹899",
+    category: "Repair",
+    image:
+      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop",
+    reviewAvatars: [
+      "https://i.pravatar.cc/40?img=13",
+      "https://i.pravatar.cc/40?img=14",
+      "https://i.pravatar.cc/40?img=15",
+    ],
+    rating: "4.6",
+    reviewCount: "156",
+  },
+  {
+    id: 5,
+    title: "Laundry Service",
+    description:
+      "Professional laundry and dry cleaning service. Pickup and delivery available at your convenience.",
+    badge: "Convenient",
+    price: "₹199",
+    category: "Laundry",
+    image:
+      "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=300&fit=crop",
+    reviewAvatars: [
+      "https://i.pravatar.cc/40?img=16",
+      "https://i.pravatar.cc/40?img=17",
+      "https://i.pravatar.cc/40?img=18",
+      "https://i.pravatar.cc/40?img=19",
+    ],
+    rating: "4.8",
+    reviewCount: "94",
+  },
+];
+
 export const data = {
   onboarding,
   workCategories,
   serviceCategories,
   topRatedProviders,
   ongoingServices,
+  serviceCards,
 };

@@ -95,7 +95,7 @@ export default function Layout() {
       <Tabs.Screen
         name="services"
         options={{
-          title: "Explore",
+          title: "Services",
           headerShown: false,
           tabBarIcon: ({ focused }) => (
             <TabIcon icon={icons.search} focused={focused} label="Explore" />

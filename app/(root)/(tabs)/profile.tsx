@@ -2,10 +2,28 @@ import { Image, ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import InputField from "@/components/InputField";
+import NoticeBanner from "@/components/NoticeBanner";
+import React, { useState } from "react";
 
 const Profile = () => {
+  const [showProfileOfferBanner, setShowProfileOfferBanner] = useState(true);
+
   return (
     <SafeAreaView className="flex-1">
+      {/* Profile Special Offer Banner */}
+      <NoticeBanner
+        isVisible={showProfileOfferBanner}
+        onClose={() => setShowProfileOfferBanner(false)}
+        title="🎁 Profile Bonus!"
+        message="Complete your profile and get 10% off your next booking plus priority customer support!"
+        type="offer"
+        actionText="Complete Profile"
+        onAction={() => {
+          setShowProfileOfferBanner(false);
+          // Handle profile completion
+        }}
+        cancelText="Skip"
+      />
       <ScrollView
         className="px-5"
         contentContainerStyle={{ paddingBottom: 120 }}
